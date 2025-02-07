@@ -1,0 +1,23 @@
+<div class="footer">
+  @if ((!router.url.includes('/cart')) && (page$ | async); as page) {
+    <div class="footer-pagination">
+      @if (page !== 1) {
+        <mat-icon (click)="changePage(page - 1)">arrow_back_ios</mat-icon>
+      }
+      @for (pageNumber of pages$ | async; track pageNumber) {
+        <span
+        class="footer-pagination-page"
+        [ngClass]="{selected: pageNumber === page}"
+        (click)="changePage(pageNumber)"
+        >
+          {{ pageNumber }}
+        </span>
+      }
+      @if ((pages$ | async)?.length && page !== (pages$ | async)?.length) {
+        <mat-icon
+          (click)="changePage(page + 1)">arrow_forward_ios
+        </mat-icon>
+      }
+    </div>
+  }
+</div>

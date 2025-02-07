@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="container-img">
+    <img [src]="'assets/images/' + card.img + '.jpg'" alt="image">
+  </div>
+  <div class="container-text">
+    <span class="container-text-title">{{card.title}}</span>
+    <span class="container-text-prize">{{card.prize | currency}}</span>
+    <span class="container-text-rating">
+      <mat-icon class="star">star</mat-icon>
+      {{card.rating}}</span>
+    <span class="container-text-count">
+      <mat-icon class="icon"
+        (click)="decreaseItemCount(card.id)">arrow_back_ios</mat-icon>
+      <span class="container-text-count__count">{{shoppingItemCount$ | async}}</span>
+      <mat-icon class="icon"
+        (click)="increaseItemCount(card)">arrow_forward_ios</mat-icon>
+    </span>
+  </div>
+</div>

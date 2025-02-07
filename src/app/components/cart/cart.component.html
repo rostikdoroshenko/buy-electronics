@@ -1,0 +1,14 @@
+<div class="cart">
+  @if (shoppingContent$ | async; as shoppingContent) {
+    <div class="cart-shopping-content">
+      @for (item of shoppingContent; track item.id) {
+        <app-cart-item [card]="item"></app-cart-item>
+      }
+    </div>
+  }
+  @if (!(shoppingContent$ | async)?.length) {
+    <div class="cart-no-content">
+      <span>Please choose some items from the store</span>
+    </div>
+  }
+</div>

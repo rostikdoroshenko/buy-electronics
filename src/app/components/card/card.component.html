@@ -1,0 +1,21 @@
+<div class="card-container">
+  <div class="card-container_img">
+    {{card.img}}
+    <img [src]="'assets/images/' + card.img + '.jpg'" alt="card">
+  </div>
+  <div class="card-container_text">
+    <span class="card-container_text_title">
+      <span>
+        {{card.title}}
+      </span>
+       <span class="prize">
+         {{card.prize | currency}}
+      </span>
+    </span>
+    <span class="card-container_text_description">
+      <span>
+        <mat-icon class="star">star</mat-icon>
+        {{card.rating}}</span>
+    </span>
+  </div>
+</div>

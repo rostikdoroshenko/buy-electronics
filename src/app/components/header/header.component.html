@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="container-home">
+    <img [src]="'assets/images/home.png'" alt="home" routerLink="/" class="container-home_img">
+  </div>
+  <div class="container-filters">
+    @if (!router.url.includes('cart')) {
+      <div class="form">
+        <form [formGroup]="formGroup">
+          <mat-form-field style="width: 100%">
+            <input matInput type="text" placeholder="search" [formControlName]='INPUT'>
+            <mat-icon matPrefix>search</mat-icon>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="select">
+        <mat-form-field>
+          <mat-label>Electronic Type</mat-label>
+          <mat-select [(value)]="selectedType" (selectionChange)="changeFilterType()">
+            @for (filterType of typeFilters; track filterType) {
+              <mat-option [value]="filterType">{{filterType}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="clear-filters">
+        <button mat-button (click)="clearFilters()">Clear Filters</button>
+      </div>
+    }
+
+  </div>
+  <div class="container-cart" routerLink="/cart">
+    @if (shoppingCount$ | async) {
+      <span class="cart-text">{{ shoppingCount$ | async }}</span>
+    }
+    <img [src]="'assets/images/cart.png'" class="cart-img" alt="cart">
+  </div>
+</div>

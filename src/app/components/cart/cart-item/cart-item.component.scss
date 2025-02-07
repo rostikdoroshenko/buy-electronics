@@ -1,0 +1,63 @@
+@import "../../../styles/colors";
+
+:host {
+  border: 1px solid #dac6c6;
+  border-radius: 6px;
+  margin: 10px;
+}
+
+.container {
+  height: 80px;
+  width: 500px;
+  margin: 10px;
+  padding: 5px;
+  display: flex;
+  border-radius: 4px;
+
+  &-img {
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &-text {
+    width: 100%;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+
+    &-title {
+      width: 40%;
+    }
+
+    &-prize {
+      width: 30%;
+    }
+
+    &-rating {
+      width: 30%;
+
+      .star {
+        color: $yellow-1;
+      }
+    }
+
+    &-count {
+      display: flex;
+      align-items: center;
+
+      .icon {
+        cursor: pointer;
+        margin: 5px;
+      }
+
+      &__count {
+        padding: 4px;
+        font-size: 16px;
+      }
+    }
+  }
+}

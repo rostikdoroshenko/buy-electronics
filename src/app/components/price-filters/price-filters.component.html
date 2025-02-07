@@ -1,0 +1,6 @@
+<div class="price-filters">
+  <mat-checkbox [checked]="isLessThan500Filter$ | async" (change)="changePriceFilter($event, FilterPrice.lessThan500)">{{ FilterPrice.lessThan500 }}</mat-checkbox>
+  <mat-checkbox [checked]="isFrom500to1000Filter$ | async" (change)="changePriceFilter($event, FilterPrice.from500to1000)">{{ FilterPrice.from500to1000 }}</mat-checkbox>
+  <mat-checkbox [checked]="isFrom1000to2000Filter$ | async" (change)="changePriceFilter($event, FilterPrice.from1000to2000)">{{ FilterPrice.from1000to2000 }}</mat-checkbox>
+  <mat-checkbox [checked]="isUp2000Filter$ | async" (change)="changePriceFilter($event, FilterPrice.up2000)">{{ FilterPrice.up2000 }}</mat-checkbox>
+</div>

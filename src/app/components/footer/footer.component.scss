@@ -1,0 +1,30 @@
+@import '../../styles/colors';
+
+.footer {
+  height: 80px;
+  width: 100%;
+  background: $green-1;
+
+  &-pagination {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    mat-icon {
+      cursor: pointer;
+    }
+
+    .selected {
+      background: #8097bb;
+    }
+
+    &-page {
+      background: #7d8a9f;
+      padding: 14px 18px;
+      margin: 6px;
+      border-radius: 24px;
+      cursor: pointer;
+    }
+  }
+}

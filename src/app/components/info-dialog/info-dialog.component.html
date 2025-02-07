@@ -1,0 +1,20 @@
+<div class="dialog-container">
+  <h1 mat-dialog-title>{{ data.title }}</h1>
+  <div mat-dialog-content>
+    <div class="description">{{ data.description }}</div>
+    @if (data.comments && data.comments.length) {
+      <div class="comments">
+        @for (comment of data.comments; let i = $index; track i) {
+          <div class="comment">
+            {{ comment }}
+          </div>
+        }
+      </div>
+    }
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button [mat-dialog-close]="true" (click)="addToCart()" class="add">Add To Cart</button>
+  </div>
+</div>
+

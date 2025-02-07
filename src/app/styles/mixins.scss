@@ -1,0 +1,20 @@
+@mixin custom-scrollbar(
+  $scrollbar-color: rgba(#589CA6, 0.5),
+  $scrollbar-width: 6px,
+  $scrollbar-radius: 10px
+) {
+  &::-webkit-scrollbar {
+    width: $scrollbar-width;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $scrollbar-color;
+    border-radius: $scrollbar-radius;
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar-track-piece:start,
+  &::-webkit-scrollbar-track-piece:end {
+    background: transparent;
+  }
+}

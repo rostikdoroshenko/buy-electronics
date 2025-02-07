@@ -1,0 +1,33 @@
+<div class="list">
+  @if (isLoading$ | async) {
+    <mat-progress-bar
+      class="list-progress"
+      mode="indeterminate">
+    </mat-progress-bar>
+  } @else {
+    <div class="list-container">
+      @if (error$ | async; as error) {
+        <span class="list-container-error" >Something went wrong...</span>
+        <span class="list-container-error" >{{error.message}}</span>
+      }
+
+      @if (getContentForOnePage$ | async; as content) {
+        <div class="list-container-block">
+          <div class="price-filters">
+            <app-price-filters></app-price-filters>
+          </div>
+          <div class="list-container-block-list">
+            @for (item of content; track item.id) {
+              <div class="list-container-block-list-item">
+                <app-card [card]="item" (click)="openDialog(item)"></app-card>
+              </div>
+            }
+          </div>
+          @if (!content.length) {
+            <span class="empty">No Items found...</span>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

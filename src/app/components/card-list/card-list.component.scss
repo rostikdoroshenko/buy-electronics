@@ -1,0 +1,58 @@
+@import "../../styles/mixins";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.list {
+  height: 100%;
+  display: flex;
+
+  &-progress {
+    margin: 100px;
+  }
+
+  &-container {
+    flex: 1;
+
+    &-error {
+      color: #b40b0b;
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    &-block {
+      height: calc(100vh - 160px);
+      width: 1200px;
+      margin: auto;
+      display: flex;
+
+      .price-filters {
+        margin-top: 50px;
+      }
+
+      &-title {
+        margin-left: 80px;
+      }
+
+      .empty {
+        display: flex;
+        margin: 100px;
+        font-size: 32px;
+      }
+
+      &-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        overflow-y: scroll;
+
+        @include custom-scrollbar(rgba(#589CA6, 0.5), 6px);
+      }
+    }
+  }
+}
