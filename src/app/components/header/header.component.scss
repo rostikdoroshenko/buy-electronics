@@ -27,6 +27,16 @@
 
       form {
         display: flex;
+
+        mat-form-field {
+          input::placeholder {
+            color: grey;
+          }
+
+          .clear-icon {
+            cursor: pointer;
+          }
+        }
       }
     }
 

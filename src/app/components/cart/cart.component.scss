@@ -1,17 +1,25 @@
-.cart {
-  height: 100%;
+@import "../../styles/mixins";
 
-  &-shopping-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  &-no-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  .cart {
+    &-shopping-content {
+      display: flex;
+      flex-direction: column;
+      max-height: calc(100vh - 164px);
+      overflow-y: auto;
+
+      @include custom-scrollbar(rgba(#589CA6, 0.5), 6px);
+    }
+
+    &-no-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 400px;
+    }
   }
 }

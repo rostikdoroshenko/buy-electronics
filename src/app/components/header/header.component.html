@@ -7,8 +7,10 @@
       <div class="form">
         <form [formGroup]="formGroup">
           <mat-form-field style="width: 100%">
-            <input matInput type="text" placeholder="search" [formControlName]='INPUT'>
-            <mat-icon matPrefix>search</mat-icon>
+            <input matInput type="text" placeholder="Search" [formControlName]='INPUT'>
+            @if (formGroup.controls[INPUT].value) {
+              <mat-icon class="clear-icon" matSuffix (click)="clearSearch($event)">close</mat-icon>
+            }
           </mat-form-field>
         </form>
       </div>
@@ -23,7 +25,17 @@
         </mat-form-field>
       </div>
       <div class="clear-filters">
-        <button mat-button (click)="clearFilters()">Clear Filters</button>
+        @if (getFilterData$ | async; as filteredData) {
+          <button
+            mat-button
+            (click)="clearFilters()"
+            [disabled]="selectedType === FilterType.All
+            && !filteredData.isLessThan500
+            && !filteredData.isFrom500to1000
+            && !filteredData.isFrom1000to2000
+            && !filteredData.isUp2000"
+          >Clear Filters</button>
+        }
       </div>
     }
 

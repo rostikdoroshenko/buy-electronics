@@ -4,9 +4,9 @@ import {actions} from "../../store/actions";
 import {debounceTime, distinctUntilChanged} from "rxjs";
 import {Store} from "@ngrx/store";
 import {FilterType} from "../../interfaces";
-import {getSelectedFilterType, getShoppingCount} from "../../store/selectors";
+import {getFilterData, getSelectedFilterType, getShoppingCount} from "../../store/selectors";
 import {Router, RouterLink} from "@angular/router";
-import {MatFormField, MatLabel} from '@angular/material/form-field';
+import {MatFormField, MatLabel, MatSuffix} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {MatButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
@@ -26,16 +26,19 @@ import {MatInput} from '@angular/material/input';
     MatLabel,
     RouterLink,
     AsyncPipe,
-    MatInput
+    MatInput,
+    MatSuffix
   ],
   standalone: true,
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  store = inject(Store);
+  protected readonly FilterType = FilterType;
   readonly INPUT = 'input';
+  store = inject(Store);
   formGroup: FormGroup;
   shoppingCount$ = this.store.select(getShoppingCount);
+  getFilterData$ = this.store.select(getFilterData);
   selectedType = FilterType.All;
   typeFilters: FilterType[] = [FilterType.All, FilterType.Appliances, FilterType.TVs, FilterType.Phones, FilterType.VideoGames, FilterType.Laptops];
 
@@ -53,6 +56,11 @@ export class HeaderComponent {
         this.store.dispatch(actions.changeSearchData({search}));
       }
     );
+  }
+
+  clearSearch(e: Event): void {
+    e.preventDefault();
+    this.formGroup.controls[this.INPUT].setValue('');
   }
 
   changeFilterType(): void {
